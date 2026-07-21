@@ -521,7 +521,7 @@ func (h *HeighlinerBuilder) buildNextImage(wg *sync.WaitGroup) {
 	go func() {
 		if err := h.buildChainNodeDockerImage(chainConfig); err != nil {
 			h.errorsLock.Lock()
-			h.errors = append(h.errors, fmt.Errorf("error building docker image for %s from ref: %s - %v\n", chainConfig.Build.Name, chainConfig.Ref, err))
+			h.errors = append(h.errors, fmt.Errorf("error building docker image for %s from ref: %s - %v", chainConfig.Build.Name, chainConfig.Ref, err))
 			h.errorsLock.Unlock()
 		}
 		h.buildNextImage(wg)
